@@ -1,80 +1,137 @@
-<nav class="navbar navbar-light">
-  <div class="container">
+<!-- <nav class="navbar navbar-light"> -->
+<nav class="Header">
+  <div class="navbar-fixed">
+    <nav class="white">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a class="left brand-logo nav__logo black-text " ui-sref="app.home">
+            <i class="black-text material-icons hide-on-med-and-down">
+              broken_image
+            </i>
+            <div
+              class="left brand-logo nav__logo black-text "
+              ng-bind="::$ctrl.appName | lowercase"
+            >
+              Linkpinss
+            </div>
+          </a>
 
-    <a class="navbar-brand"
-      ui-sref="app.home"
-      ng-bind="::$ctrl.appName | lowercase">
-    </a>
+          <div>
+            <ul
+              show-authed="false"
+              class="right hide-on-med-and-down nav-options-container"
+            >
+              <li ui-sref-active="active" ui-sref="app.login">
+                <a class="black-text"> login </a>
+              </li>
+              <li ui-sref-active="active" ui-sref="app.register">
+                <a class="black-text"> register </a>
+              </li>
+            </ul>
 
-    <!-- Show this for logged out users -->
-    <ul show-authed="false"
-      class="nav navbar-nav pull-xs-right">
+            <ul show-authed="true" class="right hide-on-med-and-down">
+              <li ui-sref-active="active" ui-sref="app.login">
+                <div class="black-text">parse</div>
+              </li>
+              <li ui-sref-active="active" ui-sref="app.login">
+                <div class="pagenav__option--inline black-text">
+                  <i class="large material-icons">perm_identity</i>
+                  {{ $ctrl.currentUser.userName }}
+                </div>
+              </li>
 
-      <li class="nav-item">
-        <a class="nav-link"
-          ui-sref-active="active"
-          ui-sref="app.home">
-          Home
-        </a>
-      </li>
+              <li ui-sref-active="active" ui-sref="app.login">
+                <div class="pagenav__option--inline black-text">
+                  <i class="large material-icons">message</i>
+                </div>
+              </li>
 
-      <li class="nav-item">
-        <a class="nav-link"
-          ui-sref-active="active"
-          ui-sref="app.login">
-          Sign in
-        </a>
-      </li>
+              <li ui-sref-active="active" ui-sref="app.login">
+                <div class="pagenav__option--inline black-text">
+                  <i class="large material-icons">settings</i>
+                </div>
+              </li>
+              <li>
+                <div to="" class="black-text" onClick="{this.handleLogout}">
+                  logout
+                </div>
+              </li>
+            </ul>
 
-      <li class="nav-item">
-        <a class="nav-link"
-          ui-sref-active="active"
-          ui-sref="app.register">
-          Sign up
-        </a>
-      </li>
+            <!-- <a
+                class="navbar-brand"
+                ui-sref="app.home"
+                ng-bind="::$ctrl.appName | lowercase"
+              >
+              </a> -->
 
-    </ul>
+            <!-- Show this for logged out users -->
+            <!-- <ul show-authed="false" class="nav navbar-nav pull-xs-right">
+              <li class="nav-item">
+                <a class="nav-link" ui-sref-active="active" ui-sref="app.home">
+                  Home
+                </a>
+              </li>
 
-    <!-- Show this for logged in users -->
-    <ul show-authed="true"
-      class="nav navbar-nav pull-xs-right">
+              <li class="nav-item">
+                <a class="nav-link" ui-sref-active="active" ui-sref="app.login">
+                  Sign in
+                </a>
+              </li>
 
-      <li class="nav-item">
-        <a class="nav-link"
-          ui-sref-active="active"
-          ui-sref="app.home">
-          Home
-        </a>
-      </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  ui-sref-active="active"
+                  ui-sref="app.register"
+                >
+                  Sign up
+                </a>
+              </li>
+            </ul> -->
 
-      <li class="nav-item">
-        <a class="nav-link"
-          ui-sref-active="active"
-          ui-sref="app.editor">
-          <i class="ion-compose"></i>&nbsp;New Article
-        </a>
-      </li>
+            <!-- Show this for logged in users -->
+            <!-- <ul show-authed="true" class="nav navbar-nav pull-xs-right">
+              <li class="nav-item">
+                <a class="nav-link" ui-sref-active="active" ui-sref="app.home">
+                  Home
+                </a>
+              </li>
 
-      <li class="nav-item">
-        <a class="nav-link"
-          ui-sref-active="active"
-          ui-sref="app.settings">
-          <i class="ion-gear-a"></i>&nbsp;Settings
-        </a>
-      </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  ui-sref-active="active"
+                  ui-sref="app.editor"
+                >
+                  <i class="ion-compose"></i>&nbsp;New Article
+                </a>
+              </li>
 
-      <li class="nav-item">
-        <a class="nav-link"
-          ui-sref-active="active"
-          ui-sref="app.profile.main({ username: $ctrl.currentUser.username})">
-          <img ng-src="{{$ctrl.currentUser.image}}" class="user-pic" />
-          {{ $ctrl.currentUser.username }}
-        </a>
-      </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  ui-sref-active="active"
+                  ui-sref="app.settings"
+                >
+                  <i class="ion-gear-a"></i>&nbsp;Settings
+                </a>
+              </li>
 
-    </ul>
-
-
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  ui-sref-active="active"
+                  ui-sref="app.profile.main({ Username: $ctrl.currentUser.Username})"
+                >
+                  {{ $ctrl.currentUser.Username }}
+                </a>
+              </li>
+            </ul> -->
+          </div>
+        </div>
+      </div>
+    </nav>
   </div>
+  <!-- <div class="container"> -->
 </nav>

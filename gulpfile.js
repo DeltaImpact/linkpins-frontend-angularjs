@@ -46,6 +46,26 @@ gulp.task('html', function() {
       .pipe(gulp.dest('./build/'));
 });
 
+
+var concat = require('gulp-concat');
+var sass = require('gulp-sass');
+
+gulp.task("css", function() {
+  return (
+    gulp
+      .src(["src/scss/**/*.scss", "src/css/**/*.css"])
+      .pipe(
+        sass({ style: "compressed", errLogToConsole: true }).on(
+          "error",
+          sass.logError
+        )
+      ) // Compile sass
+      .pipe(concat("app.min.css")) // Concat all css
+      // .pipe(minifycss())                                         // Minify the CSS
+      .pipe(gulp.dest("./build/css/"))
+  ); // Set the destination to assets/css
+});
+
 gulp.task('views', function() {
   return gulp.src(viewFiles)
       .pipe(templateCache({
@@ -69,9 +89,15 @@ gulp.task('build', ['html', 'browserify'], function() {
   return merge(html,js);
 });
 
-gulp.task('default', ['html', 'browserify'], function() {
+gulp.task("watch", function() {
+  gulp.watch("src/index.html", ["html"]);
+  gulp.watch(viewFiles, ["views"]);
+  gulp.watch(jsFiles, ["browserify"]);
+  gulp.src("src/*").pipe(notify("An asset has changed"));
+});
 
-  browserSync.init(['./build/**/**.**'], {
+gulp.task("default", ["html", "browserify", "watch", "css"], function() {
+  browserSync.init(["./build/**/**.**"], {
     server: "./build",
     port: 4000,
     notify: false,
@@ -79,8 +105,4 @@ gulp.task('default', ['html', 'browserify'], function() {
       port: 4001
     }
   });
-
-  gulp.watch("src/index.html", ['html']);
-  gulp.watch(viewFiles, ['views']);
-  gulp.watch(jsFiles, ['browserify']);
 });

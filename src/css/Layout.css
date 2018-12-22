@@ -1,0 +1,8 @@
+.Header {
+  position: sticky;
+  z-index: 999;
+}
+
+.page {
+  margin-top: 25px;
+}

@@ -10,16 +10,17 @@ function authInterceptor(JWT, AppConstants, $window, $q) {
       return config;
     },
 
-    // Handle 401
-    responseError: function(rejection) {
-      if (rejection.status === 401) {
-        // clear any JWT token being stored
-        JWT.destroy();
-        // do a hard page refresh
-        $window.location.reload();
-      }
-      return $q.reject(rejection);
-    }
+    // // Handle 401
+    // responseError: function(rejection) {
+    //   if (rejection.status === 401) {
+    //     debugger
+    //     // clear any JWT token being stored
+    //     JWT.destroy();
+    //     // do a hard page refresh
+    //     $window.location.reload();
+    //   }
+    //   return $q.reject(rejection);
+    // }
 
   }
 }
