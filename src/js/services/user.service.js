@@ -51,7 +51,7 @@ export default class User {
         .then(parseJSON)
         .then(
           response => {
-            this._JWT.save(response.token);
+            this._JWT.save(response);
             this.current = response;
             // debugger;
             return response;
@@ -82,7 +82,7 @@ export default class User {
       .then(parseJSON)
       .then(
         response => {
-          this._JWT.save(response.token);
+          this._JWT.save(response);
           this.current = response;
           return response;
         },
@@ -104,7 +104,7 @@ export default class User {
   }
 
   logout() {
-    debugger
+    // debugger;
     this.current = null;
     this._JWT.destroy();
     this._$state.go(this._$state.$current, null, { reload: true });
@@ -112,8 +112,8 @@ export default class User {
 
   verifyAuth() {
     let deferred = this._$q.defer();
-
     // check for JWT token
+
     if (!this._JWT.get()) {
       deferred.resolve(false);
       return deferred.promise;
@@ -123,17 +123,16 @@ export default class User {
       deferred.resolve(true);
     } else {
       this._$http({
-        url: this._AppConstants.api + "/user",
+        url: `${this._AppConstants.apiUrl}/account/user`,
         method: "GET",
         headers: {
-          Authorization: "Token " + this._JWT.get()
+          Authorization: "Bearer " + this._JWT.get()
         }
       }).then(
         res => {
-          this.current = res.data.user;
+          this.current = res.data;
           deferred.resolve(true);
         },
-
         err => {
           this._JWT.destroy();
           deferred.resolve(false);
@@ -146,7 +145,6 @@ export default class User {
 
   ensureAuthIs(bool) {
     let deferred = this._$q.defer();
-
     this.verifyAuth().then(authValid => {
       if (authValid !== bool) {
         this._$state.go("app.home");

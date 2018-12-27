@@ -6,16 +6,31 @@ export default class JWT {
     this._$window = $window;
   }
 
-  save(token) {
-    this._$window.localStorage[this._AppConstants.jwtKey] = token;
+  save(response) {
+    // this._$window.localStorage[this._AppConstants.jwtKey] = response.token;
+    let user = {
+      username: response.userName,
+      email: response.email,
+      token: response.token
+    };
+    localStorage.setItem("user", JSON.stringify(user));
+
   }
 
   get() {
-    return this._$window.localStorage[this._AppConstants.jwtKey];
+    let user = JSON.parse(localStorage.getItem('user'));
+    console.log("userGet");
+    return user.token;
+
+
+    // return this._$window.localStorage[this._AppConstants.jwtKey];
   }
 
   destroy() {
-    this._$window.localStorage.removeItem(this._AppConstants.jwtKey);
+    console.log("user destroy");
+    localStorage.removeItem("user");
+
+    // this._$window.localStorage.removeItem(this._AppConstants.jwtKey);
   }
 
 }

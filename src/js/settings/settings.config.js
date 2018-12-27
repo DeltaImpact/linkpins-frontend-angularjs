@@ -8,11 +8,11 @@ function SettingsConfig($stateProvider) {
     controllerAs: '$ctrl',
     templateUrl: 'settings/settings.html',
     title: 'Settings',
-    // resolve: {
-    //   auth: function(User) {
-    //     return User.ensureAuthIs(true);
-    //   }
-    // }
+    resolve: {
+      auth: function(User) {
+        return User.ensureAuthIs(true);
+      }
+    }
   });
 };
 

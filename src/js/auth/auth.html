@@ -14,6 +14,7 @@
           </p>
 
           <list-errors errors="$ctrl.errors"></list-errors>
+          <div ng-bind="$ctrl.message"></div>
           <div class="row">
             <form
               class="col s12"
@@ -38,7 +39,6 @@
                     ng-model="$ctrl.formData.username"
                   />
                   <label htmlFor="username" class="active"> Username* </label>
-                  
                 </div>
               </div>
               <div class="row" ng-show="$ctrl.authType === 'register'">
