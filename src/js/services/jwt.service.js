@@ -1,36 +1,38 @@
+import { debug } from "util";
+
 export default class JWT {
   constructor(AppConstants, $window) {
-    'ngInject';
+    "ngInject";
 
     this._AppConstants = AppConstants;
     this._$window = $window;
   }
 
   save(response) {
-    // this._$window.localStorage[this._AppConstants.jwtKey] = response.token;
+    console.log("user save");
     let user = {
       username: response.userName,
       email: response.email,
       token: response.token
     };
     localStorage.setItem("user", JSON.stringify(user));
-
   }
 
   get() {
-    let user = JSON.parse(localStorage.getItem('user'));
-    console.log("userGet");
+    let user = JSON.parse(localStorage.getItem("user"));
+    console.log("userTokenGet");
     return user.token;
+  }
 
-
-    // return this._$window.localStorage[this._AppConstants.jwtKey];
+  getCurrentUser() {
+    console.log("userGet");
+    return JSON.parse(localStorage.getItem("user"))
+      ? JSON.parse(localStorage.getItem("user"))
+      : null;
   }
 
   destroy() {
     console.log("user destroy");
     localStorage.removeItem("user");
-
-    // this._$window.localStorage.removeItem(this._AppConstants.jwtKey);
   }
-
 }

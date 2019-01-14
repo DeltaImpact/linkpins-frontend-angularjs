@@ -8,6 +8,9 @@ class AppHeaderCtrl {
       // debugger
       this.currentUser = newUser;
     })
+
+    
+    this.logout = User.logout.bind(User);
   }
 }
 

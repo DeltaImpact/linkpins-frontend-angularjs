@@ -10,7 +10,7 @@ export default class User {
     this._$state = $state;
     this._$q = $q;
 
-    this.current = null;
+    this.current = this._JWT.getCurrentUser();
   }
 
   attemptAuth(type, credentials) {
@@ -25,6 +25,7 @@ export default class User {
       );
     if (type == "login") return this.loginImpl(authObj.email, authObj.password);
   }
+
   attemptAuthValidate(type, credentials) {
     // if (credentialsOriginal != undefined) return Promise.reject(processErrorResponse(error));
     let authObj = {};
@@ -113,7 +114,8 @@ export default class User {
   verifyAuth() {
     let deferred = this._$q.defer();
     // check for JWT token
-
+    // let df = localStorage;
+    // debugger;
     if (!this._JWT.get()) {
       deferred.resolve(false);
       return deferred.promise;
@@ -155,5 +157,31 @@ export default class User {
     });
 
     return deferred.promise;
+  }
+
+  dataAboutUser(nickname) {
+    let requestUrl = `${
+      this._AppConstants.apiUrl
+    }/account/user?userNickname=${nickname}`;
+    if (nickname == undefined) {
+      requestUrl = `${this._AppConstants.apiUrl}/account/user`;
+    }
+    // debugger;
+
+    return axios
+      .get(requestUrl, {
+        headers: { Authorization: "Bearer " + this._JWT.get() }
+      })
+      .then(parseJSON)
+      .then(
+        user => {
+          // debugger;
+          return user;
+        },
+        error => {
+          // debugger;
+          return Promise.reject(processErrorResponse(error));
+        }
+      );
   }
 }
