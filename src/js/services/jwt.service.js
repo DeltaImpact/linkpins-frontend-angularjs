@@ -18,7 +18,7 @@ export default class JWT {
     localStorage.setItem("user", JSON.stringify(user));
   }
 
-  get() {
+  getToken() {
     let user = JSON.parse(localStorage.getItem("user"));
     console.log("userTokenGet");
     return user.token;

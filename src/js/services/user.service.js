@@ -128,7 +128,7 @@ export default class User {
         url: `${this._AppConstants.apiUrl}/account/user`,
         method: "GET",
         headers: {
-          Authorization: "Bearer " + this._JWT.get()
+          Authorization: "Bearer " + this._JWT.getToken()
         }
       }).then(
         res => {
@@ -170,7 +170,7 @@ export default class User {
 
     return axios
       .get(requestUrl, {
-        headers: { Authorization: "Bearer " + this._JWT.get() }
+        headers: { Authorization: "Bearer " + this._JWT.getToken() }
       })
       .then(parseJSON)
       .then(

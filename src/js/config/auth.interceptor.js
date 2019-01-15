@@ -4,8 +4,8 @@ function authInterceptor(JWT, AppConstants, $window, $q) {
   return {
     // automatically attach Authorization header
     request: function(config) {
-      if(config.url.indexOf(AppConstants.api) === 0 && JWT.get()) {
-        config.headers.Authorization = 'Token ' + JWT.get();
+      if(config.url.indexOf(AppConstants.api) === 0 && JWT.getToken()) {
+        config.headers.Authorization = 'Token ' + JWT.getToken();
       }
       return config;
     },

@@ -5,8 +5,6 @@ class SettingsCtrl {
     this._User = User;
     this._$state = $state;
     this._$scope = $scope;
-    // debugger;
-    // $scope.$apply() 
     this.userInfoLoaded = false;
     this.mode = "profile";
 
@@ -21,13 +19,7 @@ class SettingsCtrl {
         username: this.userData.userName
       };
       $scope.$apply() 
-      // debugger;
     });
-
-    // debugger;
-    // this.dataAboutUser = User.dataAboutUser.bind(User.current.username);
-
-    // dataAboutUser
 
     this.logout = User.logout.bind(User);
   }
