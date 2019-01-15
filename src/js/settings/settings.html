@@ -1,67 +1,234 @@
-<div class="settings-page">
-  <div class="container page">
-    <div class="row">
-      <div class="col-md-6 offset-md-3 col-xs-12">
+<div>
+  <div>
+    <div class="container">
+      <div class="row">
+        <div class="col m8 offset-m2">
+          <div
+            class="  col s12 m4 l2 card-panel legacy-sidebar menu__item__container"
+          >
+            <div class="menu__item__container">
+              <div
+                class="menu__item s12 card-content list__title"
+                ng-class="{'menu__item--active': $ctrl.mode == 'profile'} "
+                ng-click="$ctrl.mode = 'profile'"
+              >
+                <h6 class="s12 left-align list__item menu__item__text">
+                  Profile
+                </h6>
+              </div>
+              <div
+                class="s12 card-content list__title menu__item"
+                ng-class="{'menu__item--active': $ctrl.mode == 'changePassword'} "
+                ng-click="$ctrl.mode = 'changePassword'"
+              >
+                <h6 class="left-align list__item menu__item__text">
+                  Change Password
+                </h6>
+              </div>
+            </div>
+          </div>
 
-        <h1 class="text-xs-center">Your Settings</h1>
+          <div
+            class="col s12 m8 l10 legacy-content"
+            ng-show="$ctrl.mode == 'profile'"
+          >
+            <div class="container card-panel s12">
+              <h4 class="left-align card-title card__title">Profile</h4>
 
-        <list-errors errors="$ctrl.errors"></list-errors>
+              <div>
+                <div class="row">
+                  <form class="col s12">
+                    <div ng-show="!$ctrl.userInfoLoaded" class="progress">
+                      <div class="indeterminate"></div>
+                    </div>
 
-        <form ng-submit="$ctrl.submitForm()">
-          <fieldset ng-disabled="$ctrl.isSubmitting">
+                    <list-errors errors="$ctrl.errors"></list-errors>
 
-            <fieldset class="form-group">
-              <input class="form-control"
-                type="text"
-                placeholder="URL of profile picture"
-                ng-model="$ctrl.formData.image" />
-            </fieldset>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input
+                          id="email"
+                          type="email"
+                          ng-model="$ctrl.formData.email"
+                        />
+                        <label
+                          htmlFor="email"
+                          ng-class="{'active': $ctrl.formData.email != null} "
+                        >
+                          Email*
+                        </label>
+                      </div>
+                    </div>
 
-            <fieldset class="form-group">
-              <input class="form-control form-control-lg"
-                type="text"
-                placeholder="Username"
-                ng-model="$ctrl.formData.username" />
-            </fieldset>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input
+                          id="username"
+                          type="text"
+                          ng-model="$ctrl.formData.username"
+                        />
+                        <label
+                          htmlFor="username"
+                          ng-class="{'active': $ctrl.formData.username != null} "
+                        >
+                          Username*
+                        </label>
+                      </div>
+                    </div>
 
-            <fieldset class="form-group">
-              <textarea class="form-control form-control-lg"
-                rows="8"
-                placeholder="Short bio about you"
-                ng-model="$ctrl.formData.bio">
-              </textarea>
-            </fieldset>
+                    <div class="row">
+                      <div class="input-field col s6">
+                        <input
+                          id="firstName"
+                          type="text"
+                          ng-model="$ctrl.formData.firstName"
+                        />
+                        <label
+                          htmlFor="firstName"
+                          ng-class="{'active': $ctrl.formData.firstName != null} "
+                        >
+                          First Name
+                        </label>
+                      </div>
+                      <div class="input-field col s6">
+                        <input
+                          id="surName"
+                          type="text"
+                          ng-model="$ctrl.formData.surName"
+                        />
+                        <label
+                          htmlFor="surName"
+                          ng-class="{'active': $ctrl.formData.surName != null} "
+                        >
+                          Last Name
+                        </label>
+                      </div>
+                    </div>
 
-            <fieldset class="form-group">
-              <input class="form-control form-control-lg"
-                type="email"
-                placeholder="Email"
-                ng-model="$ctrl.formData.email" />
-            </fieldset>
+                    <div class="row">
+                      <div class="col s12">
+                        <label
+                          class="active left checkbox__container checkbox__label"
+                        >
+                          Gender
+                        </label>
+                        <p class="left checkbox__container">
+                          <label>
+                            <input
+                              type="checkbox"
+                              class="filled-in"
+                              ng-checked="$ctrl.formData.gender == null"
+                              ng-click="$ctrl.formData.gender = null"
+                            />
+                            <span>Unspecified</span>
+                          </label>
+                        </p>
+                        <p class="left checkbox__container">
+                          <label>
+                            <input
+                              type="checkbox"
+                              class="filled-in"
+                              ng-checked="$ctrl.formData.gender == true"
+                              ng-click="$ctrl.formData.gender = true"
+                            />
+                            <span>Male</span>
+                          </label>
+                        </p>
+                        <p class="left checkbox__container">
+                          <label>
+                            <input
+                              type="checkbox"
+                              class="filled-in"
+                              ng-checked="$ctrl.formData.gender == false"
+                              ng-click="$ctrl.formData.gender = false"
+                            />
+                            <span>Female</span>
+                          </label>
+                        </p>
+                      </div>
+                    </div>
 
-            <fieldset class="form-group">
-              <input class="form-control form-control-lg"
-                type="password"
-                placeholder="New Password"
-                ng-model="$ctrl.formData.password" />
-            </fieldset>
+                    <div class="row">
+                      <div class="col m12">
+                        <div class="col s10  offset-s1">
+                          <button
+                            class="btn btn-medium waves-effect waves-light s12 disabled"
+                            type="button"
+                            name="action"
+                          >
+                            Save changes
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
 
-            <button class="btn btn-lg btn-primary pull-xs-right"
-              type="submit">
-              Update Settings
-            </button>
-
-          </fieldset>
-        </form>
-
-        <!-- Line break for logout button -->
-        <hr />
-
-        <button class="btn btn-outline-danger"
-          ng-click="$ctrl.logout()">
-          Or click here to logout.
-        </button>
-
+          <div class="col s12 m8 l10 legacy-content" ng-show="$ctrl.mode == 'changePassword'">
+              <div class="container card-panel s12">
+                <h4 class="left-align card-title card__title">Change password</h4>
+      
+                <div>
+                    <div class="row">
+                      <form class="col s12">
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <input
+                              id="passOld"
+                              type="password"
+                            />
+                            <label htmlFor="passOld"  ng-class="{'active': $ctrl.formData.username != null} ">Old password</label>
+                          </div>
+                          <div class="input-field col s12">
+                            <input
+                              id="pass"
+                              type="password"
+                            />
+                            <label
+                              htmlFor="pass"
+                              ng-class="{'active': $ctrl.formData.username != null} "
+                            >
+                              New password
+                            </label>
+                          </div>
+                          <div class="input-field col s12">
+                            <input
+                              id="passConf"
+                              type="password"
+                              class="invalid-"
+                            />
+                            <label
+                              htmlFor="passConf"
+                              ng-class="{'active': $ctrl.formData.username != null} "
+                            >
+                              Confirm new password
+                            </label>
+                          </div>
+                        </div>
+            
+                        <div class="row">
+                          <div class="col m12">
+                            <div class="col s10  offset-s1">
+                              <button
+                                class="btn btn-medium waves-effect waves-light s12 disabled"
+                                type="button"
+                                name="action"
+                              >
+                                Change password
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  
+              </div>
+            </div>
+        </div>
       </div>
     </div>
   </div>
