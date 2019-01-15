@@ -1,8 +1,9 @@
 <ul ng-show="$ctrl.errors">
-  <div ng-repeat="(field, errors) in $ctrl.errors" class="error--container">
+  <div>{{ $ctrl.errors | json }}</div>
+  <!-- <div ng-repeat="(field, errors) in $ctrl.errors" class="error--container">
     {{ field }}
     <div ng-repeat="error in errors">
       <div class="error error--text alert">{{ error }}</div>
     </div>
-  </div>
+  </div> -->
 </ul>

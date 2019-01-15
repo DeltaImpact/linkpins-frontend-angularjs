@@ -1,0 +1,15 @@
+<!-- <ul > -->
+dasd
+<p ng-bind="$ctrl.items"></p>
+<p ng-show="$ctrl.items">aw</p>
+
+<ul ng-show="$ctrl.items">
+  <div>{{ $ctrl.items | json }}</div>
+  
+  <div ng-repeat="(field, items) in $ctrl.items" class="error--container">
+    {{ field }}
+    <div ng-repeat="item in items">
+      <div class="item error--text alert">{{ item }}</div>
+    </div>
+  </div>
+</ul>

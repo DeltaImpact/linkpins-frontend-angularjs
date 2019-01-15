@@ -19,8 +19,8 @@ servicesModule.service('Articles', ArticlesService);
 import CommentsService from './comments.service';
 servicesModule.service('Comments', CommentsService);
 
-import TagsService from './tags.service';
-servicesModule.service('Tags', TagsService);
+import PinService from './pin.service';
+servicesModule.service('Pins', PinService);
 
 
 export default servicesModule;
