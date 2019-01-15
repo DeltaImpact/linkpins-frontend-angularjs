@@ -116,7 +116,7 @@ export default class User {
     // check for JWT token
     // let df = localStorage;
     // debugger;
-    if (!this._JWT.get()) {
+    if (!this._JWT.getToken()) {
       deferred.resolve(false);
       return deferred.promise;
     }
