@@ -1,17 +1,15 @@
-<div class="home-page">
-  <div className="container">
-    <div className="row">
-      <div className="col l8 offset-l2 m8 l9 legacy-content">
+<div class="home-page page">
+  <div class="container">
+    <div class="row">
+      <div class="col l8 offset-l2 m8 l9 legacy-content">
         <div ng-show="!$ctrl.mainPagePinsLoaded" class="progress">
           <div class="indeterminate"></div>
         </div>
-        <!-- <ul className="collection" ng-if="$ctrl.mainPagePinsLoaded">
-          <cards items="$crl.mainPagePins"></cards>
-        </ul>
+
+        <list-errors errors="$ctrl.errors" ng-if="$ctrl.errors"></list-errors>
+
+        <cards ng-if="$ctrl.mainPagePins" items="$ctrl.mainPagePins"></cards>
       </div>
-      <div ng-bind="$crl.mainPagePins | json" ng-if="$ctrl.mainPagePinsLoaded">
-        data
-      </div> -->
     </div>
   </div>
 </div>
