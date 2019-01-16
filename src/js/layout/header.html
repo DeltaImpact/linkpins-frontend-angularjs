@@ -34,10 +34,11 @@
               <li>
                 <a
                   class="pagenav__option--inline black-text"
-                  href="/profile/user123"
+                  href="/profile/{{ $ctrl.currentUser.username  }}"
                 >
                   <i class="large material-icons">perm_identity</i>
-                  {{ $ctrl.currentUser.userName }}
+                  {{ $ctrl.currentUser.username  }}
+                
                 </a>
               </li>
               <li ui-sref-active="active" ui-sref="app.settings">
