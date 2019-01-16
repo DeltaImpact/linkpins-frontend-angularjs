@@ -30,15 +30,16 @@
             </ul>
 
             <ul show-authed="true" class="right hide-on-med-and-down">
-              <li><a class="black-text" href="/parse">parse</a></li>
-              <li>
+              <li ui-sref-active="active" ui-sref="app.parse">
+                <a class="black-text">parse</a>
+              </li>
+              <li ui-sref-active="active" ui-sref="app.profile">
                 <a
                   class="pagenav__option--inline black-text"
-                  href="/profile/{{ $ctrl.currentUser.username  }}"
+                  href="/profile/{{ $ctrl.currentUser.username }}"
                 >
                   <i class="large material-icons">perm_identity</i>
-                  {{ $ctrl.currentUser.username  }}
-                
+                  {{ $ctrl.currentUser.username }}
                 </a>
               </li>
               <li ui-sref-active="active" ui-sref="app.settings">
