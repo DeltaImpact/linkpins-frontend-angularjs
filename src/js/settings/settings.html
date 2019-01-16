@@ -1,5 +1,5 @@
-<div>
-  <div>
+<div >
+  <div class="page">
     <div class="container">
       <div class="row">
         <div class="col m8 offset-m2">
@@ -41,8 +41,7 @@
                     <div ng-show="!$ctrl.userInfoLoaded" class="progress">
                       <div class="indeterminate"></div>
                     </div>
-
-                    <list-errors errors="$ctrl.errors"></list-errors>
+                    <list-errors errors="$ctrl.errors" ng-if="$ctrl.errors"></list-errors>
 
                     <div class="row">
                       <div class="input-field col s12">
