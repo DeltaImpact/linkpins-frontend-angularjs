@@ -8,18 +8,26 @@ class SettingsCtrl {
     this.userInfoLoaded = false;
     this.mode = "profile";
 
-    User.dataAboutUser(User.current.username).then(dataAboutUser => {
-      this.userInfoLoaded = true;
-      this.userData = dataAboutUser;
-      this.formData = {
-        email: this.userData.email,
-        firstName: this.userData.firstName,
-        surName: this.userData.surname,
-        gender: this.userData.gender,
-        username: this.userData.userName
-      };
-      $scope.$apply() 
-    });
+    User.dataAboutUser(User.current.username).then(
+      dataAboutUser => {
+        this.userInfoLoaded = true;
+        this.userData = dataAboutUser;
+        this.formData = {
+          email: this.userData.email,
+          firstName: this.userData.firstName,
+          surName: this.userData.surname,
+          gender: this.userData.gender,
+          username: this.userData.userName
+        };
+        $scope.$apply();
+      },
+      errors => {
+        this.userInfoLoaded = true;
+        this.errors = errors;
+        $scope.$apply();
+        // debugger;
+      }
+    );
 
     this.logout = User.logout.bind(User);
   }
