@@ -10,13 +10,13 @@ class HomeCtrl {
       pins => {
         this.mainPagePinsLoaded = true;
         this.mainPagePins = pins;
-        console.log(this.mainPagePins);
+        // console.log(this.mainPagePins);
         // debugger;
         $scope.$apply();
       },
       errors => {
         this.mainPagePinsLoaded = true;
-        this.errors = errors;
+        this.errors = errors.messages;
         $scope.$apply();
         // debugger;
       }

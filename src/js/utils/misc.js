@@ -54,7 +54,7 @@ export function validateEmail(email) {
 // }
 
 export function processErrorResponse(error) {
-  let err = {};
+  let err = [];
   if (error.response) {
     err.response = error.response;
     if (error.response.status === 400) {
@@ -69,8 +69,12 @@ export function processErrorResponse(error) {
   }
 
   if (error.message === "Network Error") {
+    // let msg = {};
     err.status = 503;
-    err.message = "Network Error";
+    // msg.message = "Network Error";
+    err.messages = {};
+    err.messages.Networking = ["Network Error"];
+    // debugger
   }
   return err;
 }

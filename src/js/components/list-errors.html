@@ -1,10 +1,14 @@
-<!-- <div>{{ $ctrl.errors | json }}</div> -->
-<div ng-show="$ctrl.errors" class="row error--container">
-  <div
-  ng-repeat="(field, errors) in $ctrl.errors"
-  class="error error--text alert alert-info"
-  ng-if="field == 'message'"
-  >
-  {{ errors }}
+<!-- <div>{{ $ctrl.errors | json }}</div>
+<hr /> -->
+<div ng-show="$ctrl.errors">
+  <div ng-repeat="(errorType, errors) in $ctrl.errors">
+    <div class="row error--container">
+      <div
+        class="error error--text alert alert-info"
+        ng-repeat="error in errors"
+      >
+        {{ error }}
+      </div>
+    </div>
   </div>
 </div>

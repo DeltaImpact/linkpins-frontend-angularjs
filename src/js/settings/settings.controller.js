@@ -23,26 +23,13 @@ class SettingsCtrl {
       },
       errors => {
         this.userInfoLoaded = true;
-        this.errors = errors;
+        this.errors = errors.messages;
         $scope.$apply();
         // debugger;
       }
     );
 
     this.logout = User.logout.bind(User);
-  }
-
-  submitForm() {
-    this.isSubmitting = true;
-    this._User.update(this.formData).then(
-      user => {
-        this._$state.go("app.profile.main", { username: user.username });
-      },
-      err => {
-        this.isSubmitting = false;
-        this.errors = err.data.errors;
-      }
-    );
   }
 }
 
