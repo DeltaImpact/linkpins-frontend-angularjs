@@ -1,3 +1,5 @@
+import { dateInWordsToNow, renderError } from "../utils/misc";
+
 let Cards = {
   bindings: {
     items: "="
@@ -10,6 +12,11 @@ let Cards = {
       $ctrl.$onDestroy = onDestroy;
       $ctrl.$onChanges = onChanges;
 
+      this.getLastModifiedDate = function(item) {
+        return item.modified
+          ? dateInWordsToNow(item.modified)
+          : dateInWordsToNow(item.created);
+      };
       /**
        * public properties
        */
@@ -48,13 +55,9 @@ let Cards = {
        */
       function onDestroy() {
         // debugger
-
       }
     }
   ]
-  // changeList(newList) {
-  //   this._$scope.$broadcast("setListTo", newList);
-  // }
 };
 
 export default Cards;
