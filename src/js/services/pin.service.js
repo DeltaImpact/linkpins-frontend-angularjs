@@ -1,7 +1,7 @@
 import { parseJSON, processErrorResponse, getSafe } from "../utils/misc";
 import axios from "axios";
 
-export default class Tags {
+export default class Pins {
   constructor(JWT, AppConstants, $http, $q) {
     "ngInject";
 

@@ -1,4 +1,4 @@
-function ProfileConfig($stateProvider) {
+function ParsingConfig($stateProvider) {
   'ngInject';
 
   $stateProvider
@@ -8,32 +8,22 @@ function ProfileConfig($stateProvider) {
     controller: 'ProfileCtrl',
     controllerAs: '$ctrl',
     templateUrl: 'profile/profile.html',
-    resolve: {
-      profile: function(Profile, $state, $stateParams) {
-        return Profile.get($stateParams.username).then(
-          (profile) => profile,
-          (err) => $state.go('app.home')
-        )
-      }
-    }
-
-  })
-
-  .state('app.profile.main', {
-    url:'',
-    controller: 'ProfileArticlesCtrl',
-    controllerAs: '$ctrl',
-    templateUrl: 'profile/profile-articles.html',
-    title: 'Profile'
-  })
-  .state('app.profile.favorites', {
-    url:'/favorites',
-    controller: 'ProfileArticlesCtrl',
-    controllerAs: '$ctrl',
-    templateUrl: 'profile/profile-articles.html',
-    title: 'Favorites'
+    title: 'Profile',
+    // resolve: {
+    //   auth: function(User) {
+    //     return User.ensureAuthIs(true);
+    //   }
+    // }
+    // resolve: {
+    //   profile: function(Profile, $state, $stateParams) {
+    //     debugger
+    //     return Profile.get($stateParams.username).then(
+    //       (profile) => profile,
+    //       (err) => $state.go('app.home')
+    //     )
+    //   }
+    // }
   });
-
 };
 
-export default ProfileConfig;
+export default ParsingConfig;
