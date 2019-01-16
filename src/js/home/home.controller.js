@@ -6,17 +6,22 @@ class HomeCtrl {
     this._$scope = $scope;
     this._Pins = Pins;
 
-    Pins.getMainPage().then(pins => {
-      this.mainPagePinsLoaded = true;
-      this.mainPagePins = pins;
-      // debugger;
-      $scope.$apply();
-    });
+    Pins.getMainPage().then(
+      pins => {
+        this.mainPagePinsLoaded = true;
+        this.mainPagePins = pins;
+        console.log(this.mainPagePins);
+        // debugger;
+        $scope.$apply();
+      },
+      errors => {
+        this.mainPagePinsLoaded = true;
+        this.errors = errors;
+        $scope.$apply();
+        // debugger;
+      }
+    );
   }
-
-  // changeList(newList) {
-  //   this._$scope.$broadcast("setListTo", newList);
-  // }
 }
 
 export default HomeCtrl;
