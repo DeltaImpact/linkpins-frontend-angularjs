@@ -1,15 +1,28 @@
-<!-- <ul > -->
-dasd
-<p ng-bind="$ctrl.items"></p>
-<p ng-show="$ctrl.items">aw</p>
-
-<ul ng-show="$ctrl.items">
-  <div>{{ $ctrl.items | json }}</div>
-  
-  <div ng-repeat="(field, items) in $ctrl.items" class="error--container">
-    {{ field }}
-    <div ng-repeat="item in items">
-      <div class="item error--text alert">{{ item }}</div>
+<ul class="collection" ng-show="$ctrl.items">
+  <li
+    ng-repeat="(field, item) in $ctrl.items"
+    class="collection-item avatar pin-content board__card"
+  >
+    <!-- {{ item | json }} -->
+    <div class="board__card__content col m12">
+      <div>
+        <a href="/pin/{{ item.id }}"
+          ><img src="{{ item.img }}" alt="" class="circle" />
+          <div class="title board__card__text--short">{{ item.name }}</div>
+          <p class="board__card__text--short">{{ item.description }}</p></a
+        ><a href="{{ item.link }}" class=""
+          ><span class="board__misc board__card__text--short">{{
+            item.link
+          }}</span></a
+        >
+        <div class="board__misc">
+          <div class="board__misc">
+            <span class="board__misc__item--time"
+              >Last change {{ $ctrl.getLastModifiedDate(item) }}</span
+            >
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </li>
 </ul>
