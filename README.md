@@ -2,7 +2,7 @@
 
 # linkpins-frontend-angularjs
 
-This is port of [linkpins-frontend](https://github.com/gothinkster/realworld-example-apps) from React to AngularJS, in learning AngularJS purposes.
+This is port of [linkpins-frontend](https://github.com/DeltaImpact/linkpins-frontend) from React to AngularJS, in learning AngularJS purposes.
 
 ## Getting started
 
