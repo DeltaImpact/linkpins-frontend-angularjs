@@ -33,7 +33,10 @@
               <li ui-sref-active="active" ui-sref="app.parse">
                 <a class="black-text">parse</a>
               </li>
-              <li ui-sref-active="active" ui-sref="app.profile">
+              <li
+                ui-sref-active="active"
+                ui-sref="app.profile.main({ username: $ctrl.currentUser.username})"
+              >
                 <a
                   class="pagenav__option--inline black-text"
                   href="/profile/{{ $ctrl.currentUser.username }}"

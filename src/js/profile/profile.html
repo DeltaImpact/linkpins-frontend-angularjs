@@ -1,124 +1,44 @@
 <div>
   <div class="page">
     <div>
-      <!-- pin request form -->
+      <!-- profile -->
       <div class="container">
         <div class="row">
-          <div class="col m10 offset-m1 z-depth-3 card-panel">
-            <div class="col hg22 offset-hg1">
-              <h2 class="center-align">Page parse</h2>
-              <div ng-show="$ctrl.isLoading" class="progress">
-                <div class="indeterminate"></div>
-              </div>
+          <div class="col m8 offset-m2">
+            <ul class="collection">
+              <li class="collection-item avatar pin-content board__card">
+                <div class="board__card__content col m12">
+                  <div ng-show="$ctrl.isLoading" class="progress">
+                    <div class="indeterminate"></div>
+                  </div>
 
-              <list-errors
-                errors="$ctrl.errors"
-                ng-if="$ctrl.errors"
-              ></list-errors>
-
-              <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <input
-                        id="url"
-                        type="text"
-                        ng-model="$ctrl.ToParseUrl"
-                      /><label for="url" class="active">Site url</label>
+                  <list-errors
+                    errors="$ctrl.errors"
+                    ng-if="$ctrl.errors"
+                  ></list-errors>
+                  <div ng-if="$ctrl.userData">
+                    <div>
+                      <i class="material-icons circle green">person</i>
+                      <div class="title board__card__text--short" ng-bind="$ctrl.userData.userName">Username</div>
+                      <p class="board__card__text--short" ng-bind="$ctrl.userData.email">Email</p>
+                    </div>
+                    <div class="board__misc">
+                      <span
+                        class="board__misc__item--radio_button_unchecked"
+                        ng-bind="$ctrl.userData.isOnline ? 'Online' : 'Offline'"
+                        >Offline</span
+                      >
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col m12">
-                      <div class="col s10  offset-s1">
-                        <button
-                          class="btn btn-medium waves-effect waves-light s12"
-                          type="button"
-                          name="action"
-                          ng-click="$ctrl.parseSite()"
-                        >
-                          Parse
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- pin preview -->
-      <div ng-if="$ctrl.pinPreview" class="container">
-        <div class="row ">
-          <div class="card-panel">
-            <div class="card-content list__title">
-              <h6 class="left-align list__item">Preview</h6>
-            </div>
-            <div>
-              <div class="">
-                <ul class="collection ">
-                  <li class="collection-item avatar pin-content">
-                    <img src="{{ $ctrl.pinPreview.images }}" class="circle" />
-                    <div class="col m12">
-                      <span class="title" ng-bind="$ctrl.pinPreview.header"
-                        >Title</span
-                      >
-                      <p
-                        class=""
-                        ng-bind="$ctrl.pinPreview.possibleDescriptions"
-                      >
-                        Description
-                      </p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- possible images and descriptions -->
-      <div ng-if="$ctrl.item" class="container">
-        <div class="row">
-          <div class="col m5 z-depth-3 card-panel">
-            <div class="card-content list__title">
-              <h6 class="left-align list__item">Choose image</h6>
-            </div>
-            <ul>
-              <li
-                ng-repeat="(errorType, image) in $ctrl.item.images"
-                ng-click="$ctrl.setPinPreviewImage(image)"
-                class="square-container"
-                ng-class="{'square-container-active': ($ctrl.pinPreview.images == image)}"
-              >
-                <img src=" {{ image }}" class="square square-active" />
+                </div>
               </li>
-            </ul>
-          </div>
-          <div class="col m6 offset-m1 z-depth-3 card-panel">
-            <div class="card-content list__title">
-              <h6 class="left-align list__item">Choose description</h6>
-            </div>
-            <ul>
-              <div
-                ng-repeat="(errorType, description) in $ctrl.item.possibleDescriptions"
-                ng-click="$ctrl.setPinPreviewDescription(description)"
-              >
-                <li
-                  class="description__container"
-                  ng-class="{'description__container--active': ($ctrl.pinPreview.possibleDescriptions == description)}"
-                >
-                  <div ng-bind="description">Description</div>
-                </li>
-                <div class="divider"></div>
-              </div>
             </ul>
           </div>
         </div>
       </div>
 
       <!-- raw view -->
-      <!-- <div>{{ $ctrl.item | json }}</div> -->
+      <!-- <div>{{ $ctrl.userData | json }}</div> -->
     </div>
   </div>
 </div>
