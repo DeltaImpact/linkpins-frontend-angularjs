@@ -1,25 +1,19 @@
-# ![Angular 1.5+ ES6 & Component API Example App](project-logo.png)
+<img src="project-logo.png" align="right" />
 
-> Example Angular 1.5+ (ES6 + Components) codebase that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API.
+# linkpins-frontend-angularjs
 
-View the **[demo application](https://angularjs.realworld.io)** or **[learn how to build the application from scratch](https://thinkster.io/angularjs-es6-tutorial)**!
+This is port of [linkpins-frontend](https://github.com/gothinkster/realworld-example-apps) from React to AngularJS, in learning AngularJS purposes.
 
-# Getting started
+## Getting started
 
 1. Clone repo
 2. `npm install`
 3. `gulp`
 
-Make sure you have gulp installed globally (`npm install -g gulp`)
+### Prerequisites
 
-### Making requests to the backend API
+This project require [linkpins-backend](https://github.com/DeltaImpact/linkpins-backend) as the backend.
 
-For convenience, we have a live API server running at https://conduit.productionready.io/api for the application to make requests against. You can view [the API spec here](https://github.com/GoThinkster/productionready/blob/master/api) which contains all routes & responses for the server.
+### Acknowledgments
 
-The source code for the backend server (available for Node, Rails and Django) can be found in the [main RealWorld repo](https://github.com/gothinkster/realworld).
-
-If you want to change the API URL to a local server, simply edit `src/js/config/app.constants.js` and change `api` to the local server's URL (i.e. `localhost:3000/api`)
-
-<br />
-
-[![Brought to you by Thinkster](https://raw.githubusercontent.com/gothinkster/realworld/master/media/end.png)](https://thinkster.io)
+* This project based on [angularjs-realworld-example-app](https://github.com/gothinkster/angularjs-realworld-example-app)
